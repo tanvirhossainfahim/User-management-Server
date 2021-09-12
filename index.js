@@ -8,19 +8,21 @@ const morgan = require("morgan");
 
 const userRoute = require("./routes/users");
 const authRoute = require("./routes/auth");
-// MONGO_URL = mongodb+srv://userData:user1234@cluster0.dwwpp.mongodb.net/userData?retryWrites=true&w=majority
 dotenv.config();
-const port = process.env.PORT || 5050;
+const port = process.env.PORT || 5005;
 const mongoURL = process.env.MONGO_URL;
 // mongoose.set('useFindAndModify', false);
 
 mongoose
-  .connect(mongoURL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    // useCreateIndex: true,
-    // useFindAndModify:false
-  })
+  .connect(
+    "mongodb+srv://user-management:user-management@cluster0.mguad.mongodb.net/user-management?retryWrites=true&w=majority",
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      // useCreateIndex: true,
+      // useFindAndModify:false
+    }
+  )
   .then(() => console.log("Database is working properly!"))
   .catch((err) => console.log(err));
 
